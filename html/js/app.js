@@ -403,11 +403,19 @@ function generateDescription(itemData) {
 
 function FormatItemInfo(itemData) {
     if (itemData && itemData.info !== "") {
-        const description = generateDescription(itemData);
-        setItemInfo(itemData.label, description);
-    } else {
-        setItemInfo(itemData.label, itemData.description || "");
-    }
+        //added for lbphone
+        if (itemData.name == "phone" && itemData.info.lbPhoneNumber) {
+            $(".item-info-title").html("<p>" + (itemData.info.lbPhoneName ?? itemData.label) + "</p>")
+            $(".item-info-description").html(
+                "<p><strong>Phone Number: </strong><span>" + (itemData.info.lbFormattedNumber ?? itemData.info.lbPhoneNumber) + "</span></p>"
+            )
+            return
+        }
+       // const description = generateDescription(itemData);
+        //setItemInfo(itemData.label, description);
+    //} else {
+      //  setItemInfo(itemData.label, itemData.description || "");
+    //}
 }
 
 $(document).on("wheel", function (e) {
