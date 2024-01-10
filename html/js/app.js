@@ -411,11 +411,12 @@ function FormatItemInfo(itemData) {
             )
             return
         }
-       // const description = generateDescription(itemData);
-        //setItemInfo(itemData.label, description);
-    //} else {
-      //  setItemInfo(itemData.label, itemData.description || "");
-    //}
+        //till here
+        const description = generateDescription(itemData);
+        setItemInfo(itemData.label, description);
+    } else {
+        setItemInfo(itemData.label, itemData.description || "");
+    }
 }
 
 $(document).on("wheel", function (e) {
