@@ -577,9 +577,16 @@ RegisterNetEvent('inventory:client:UseWeapon', function(weaponData, shootbool)
         TriggerEvent('weapons:client:SetCurrentWeapon', weaponData, shootbool)
         local ammo = tonumber(weaponData.info.ammo) or 0
 
-        if weaponName == 'weapon_petrolcan' or weaponName == 'weapon_fireextinguisher' then
+        --removed for ps-fuel
+        --[[if weaponName == 'weapon_petrolcan' or weaponName == 'weapon_fireextinguisher' then
+            ammo = 4000
+        end]]
+
+        --added for ps-fuel
+        if weaponName == "weapon_fireextinguisher" then
             ammo = 4000
         end
+        --till here
 
         GiveWeaponToPed(ped, weaponHash, ammo, false, false)
         SetPedAmmo(ped, weaponHash, ammo)
